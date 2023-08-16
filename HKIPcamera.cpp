@@ -14,7 +14,7 @@ void yv12toBGRMat(char *inYv12, int width, int height, Mat &outMat) {
     int bufLen = width * yuvHeight;
     Mat yuvImg;
     yuvImg.create(yuvHeight, width, CV_8UC1);
-    memcpy(yuvImg.data, inYv12, bufLen * sizeof(BYTE));
+    memcpy(yuvImg.data, inYv12, sizeof(char) * bufLen);
     cvtColor(yuvImg, outMat, COLOR_YUV2BGR_YV12);
 }
 
