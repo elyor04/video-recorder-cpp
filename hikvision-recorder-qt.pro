@@ -69,7 +69,4 @@ LIBS += -L$$PWD/../../../opencv-ffmpeg/build-copy/lib/ \
     -lopencv_videoio
 
 INCLUDEPATH += $$PWD/../../hikvision-sdk-all/inc
-DEPENDPATH += $$PWD/../../hikvision-sdk-all/inc
-
 INCLUDEPATH += $$PWD/../../../opencv-ffmpeg/build-copy/opencv2
-DEPENDPATH += $$PWD/../../../opencv-ffmpeg/build-copy/opencv2
