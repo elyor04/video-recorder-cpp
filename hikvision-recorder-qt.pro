@@ -50,7 +50,7 @@ LIBS += -L$$PWD/../../hikvision-sdk-all/lib/HCNetSDKCom/ \
     -lStreamTransClient \
     -lSystemTransform
 
-LIBS += -L$$PWD/../../../opencv-ffmpeg/build-copy/lib/ \
+LIBS += -L$$PWD/../../../opencv-ffmpeg/lib/ \
     -lopencv_calib3d \
     -lopencv_core \
     -lopencv_dnn \
@@ -69,4 +69,4 @@ LIBS += -L$$PWD/../../../opencv-ffmpeg/build-copy/lib/ \
     -lopencv_videoio
 
 INCLUDEPATH += $$PWD/../../hikvision-sdk-all/inc
-INCLUDEPATH += $$PWD/../../../opencv-ffmpeg/build-copy/opencv2
+INCLUDEPATH += $$PWD/../../../opencv-ffmpeg/inc
