@@ -72,9 +72,9 @@ void f_ImageDataCallBack(Mat bgrMat, void *pUser) {
             mkdir_cd(myDir, now.toString("dd"));
             QString myFile = myDir.filePath(now.toString("hh_mm_ss") + ".mp4");
 
-            int codec = cv::VideoWriter::fourcc('m','p','4','v');
+            int codec = VideoWriter::fourcc('m','p','4','v');
             double fps = 25;
-            cv::Size frameSize = cv::Size(bgrMat.cols, bgrMat.rows);
+            Size frameSize = Size(bgrMat.cols, bgrMat.rows);
             bool isColor = (bgrMat.type() == CV_8UC3);
 
             self->writer.open(myFile.toStdString(), codec, fps, frameSize, isColor);
