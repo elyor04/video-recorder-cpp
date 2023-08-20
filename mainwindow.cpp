@@ -87,10 +87,10 @@ void f_ImageDataCallBack(UMat bgrUMat, void *pUser) {
         self->writer.release();
 
     if (self->ui->tabWidget->currentIndex() == 1) {
-        UMat smallUMat;
-        resize(bgrUMat, smallUMat,
-               Size(self->ui->videoLabel->width(), self->ui->videoLabel->height()), 0, 0, INTER_AREA);
-        self->ui->videoLabel->setPixmap(cvMatToQPixmap(smallUMat));
+        resize(bgrUMat, bgrUMat,
+               Size(self->ui->videoLabel->width(), self->ui->videoLabel->height()),
+               0, 0, INTER_AREA);
+        self->ui->videoLabel->setPixmap(cvMatToQPixmap(bgrUMat));
     }
 }
 
@@ -100,6 +100,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     _init();
+    ocl::setUseOpenCL(true);
 }
 
 MainWindow::~MainWindow()

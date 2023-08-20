@@ -82,7 +82,6 @@ HKIPcamera::HKIPcamera() {
     linkmode_ = 0;
     fImageDataCallBack_ = NULL;
     pUser_ = NULL;
-
     ocl::setUseOpenCL(true);
 }
 
