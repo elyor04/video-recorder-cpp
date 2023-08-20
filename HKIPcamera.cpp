@@ -9,12 +9,10 @@
 
 using namespace std;
 
-void yv12toBGRMat(char *inYv12, int width, int height, Mat &outMat) {
+void yv12toBGRMat(char *inYv12, int width, int height, UMat &outMat) {
     int yuvHeight = height * 3 / 2;
-    int bufLen = width * yuvHeight;
-    Mat yuvImg(yuvHeight, width, CV_8UC1);
-    memcpy(yuvImg.data, inYv12, sizeof(char) * bufLen);
-    cvtColor(yuvImg, outMat, COLOR_YUV2BGR_YV12);
+    Mat yuvImg = Mat(yuvHeight, width, CV_8UC1, inYv12);
+    cvtColor(yuvImg.getUMat(ACCESS_READ), outMat, COLOR_YUV2BGR_YV12);
 }
 
 void CALLBACK DecCBFun(int nPort, char *pBuf, int nSize, FRAME_INFO *pFrameInfo,
@@ -25,9 +23,9 @@ void CALLBACK DecCBFun(int nPort, char *pBuf, int nSize, FRAME_INFO *pFrameInfo,
     if (hkipc->fImageDataCallBack_ == NULL)
         return;
     if (lFrameType == T_YV12) {
-        Mat bgrMat;
-        yv12toBGRMat(pBuf, pFrameInfo->nWidth, pFrameInfo->nHeight, bgrMat);
-        hkipc->fImageDataCallBack_(bgrMat, hkipc->pUser_);
+        UMat bgrUMat;
+        yv12toBGRMat(pBuf, pFrameInfo->nWidth, pFrameInfo->nHeight, bgrUMat);
+        hkipc->fImageDataCallBack_(bgrUMat, hkipc->pUser_);
     }
 }
 
@@ -84,6 +82,8 @@ HKIPcamera::HKIPcamera() {
     linkmode_ = 0;
     fImageDataCallBack_ = NULL;
     pUser_ = NULL;
+
+    ocl::setUseOpenCL(true);
 }
 
 bool HKIPcamera::login(char *ip, char *usr, char *password, WORD port,

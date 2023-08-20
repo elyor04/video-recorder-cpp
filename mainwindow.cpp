@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <opencv2/core/ocl.hpp>
 #include <QImage>
 #include <QPixmap>
 #include <QMessageBox>
@@ -19,26 +20,26 @@ bool mkdir_cd(QDir &path, QString dirName) {
     return path.cd(dirName);
 }
 
-QImage cvMatToQImage(Mat &inMat) {
+QImage cvMatToQImage(UMat &inMat) {
     switch (inMat.type()) {
     // 8-bit, 4 channel
     case CV_8UC4:
     {
-        QImage image(inMat.data, inMat.cols, inMat.rows,
+        QImage image(inMat.getMat(cv::ACCESS_READ).data, inMat.cols, inMat.rows,
                      static_cast<int>(inMat.step), QImage::Format_ARGB32);
         return image;
     }
     // 8-bit, 3 channel
     case CV_8UC3:
     {
-        QImage image(inMat.data, inMat.cols, inMat.rows,
+        QImage image(inMat.getMat(cv::ACCESS_READ).data, inMat.cols, inMat.rows,
                      static_cast<int>(inMat.step), QImage::Format_RGB888);
         return image.rgbSwapped();
     }
     // 8-bit, 1 channel
     case CV_8UC1:
     {
-        QImage image(inMat.data, inMat.cols, inMat.rows,
+        QImage image(inMat.getMat(cv::ACCESS_READ).data, inMat.cols, inMat.rows,
                      static_cast<int>(inMat.step), QImage::Format_Grayscale8);
         return image;
     }
@@ -50,11 +51,11 @@ QImage cvMatToQImage(Mat &inMat) {
     }
 }
 
-QPixmap cvMatToQPixmap(Mat &inMat) {
+QPixmap cvMatToQPixmap(UMat &inMat) {
     return QPixmap::fromImage(cvMatToQImage(inMat));
 }
 
-void f_ImageDataCallBack(Mat bgrMat, void *pUser) {
+void f_ImageDataCallBack(UMat bgrUMat, void *pUser) {
     MainWindow *self = static_cast<MainWindow *>(pUser);
 
     if (self->reOpen) {
@@ -74,22 +75,22 @@ void f_ImageDataCallBack(Mat bgrMat, void *pUser) {
 
             int codec = VideoWriter::fourcc('m','p','4','v');
             double fps = 25;
-            Size frameSize = Size(bgrMat.cols, bgrMat.rows);
-            bool isColor = (bgrMat.type() == CV_8UC3);
+            Size frameSize = Size(bgrUMat.cols, bgrUMat.rows);
+            bool isColor = (bgrUMat.type() == CV_8UC3);
 
             self->writer.open(myFile.toStdString(), codec, fps, frameSize, isColor);
         }
         else
-            self->writer.write(bgrMat);
+            self->writer.write(bgrUMat);
     }
     else if (self->writer.isOpened())
         self->writer.release();
 
     if (self->ui->tabWidget->currentIndex() == 1) {
-        Mat smallMat;
-        resize(bgrMat, smallMat,
+        UMat smallUMat;
+        resize(bgrUMat, smallUMat,
                Size(self->ui->videoLabel->width(), self->ui->videoLabel->height()), 0, 0, INTER_AREA);
-        self->ui->videoLabel->setPixmap(cvMatToQPixmap(smallMat));
+        self->ui->videoLabel->setPixmap(cvMatToQPixmap(smallUMat));
     }
 }
 

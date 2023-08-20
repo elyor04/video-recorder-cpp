@@ -3,10 +3,11 @@
 
 #include "HCNetSDK.h"
 #include <opencv2/opencv.hpp>
+#include <opencv2/core/ocl.hpp>
 
 using namespace cv;
 
-typedef void (CALLBACK *IMAGEDATACALLBACK) (Mat bgrMat, void *pUser);
+typedef void (CALLBACK *IMAGEDATACALLBACK) (UMat bgrUMat, void *pUser);
 
 class HKIPcamera {
 public:
@@ -27,6 +28,7 @@ public:
     NET_DVR_DEVICEINFO_V30 struDeviceInfo_;
     IMAGEDATACALLBACK fImageDataCallBack_;
     void* pUser_;
+    bool useOcl_;
 
 private:
     bool OpenCamera(char *ip, char *usr, char *password, WORD port);
