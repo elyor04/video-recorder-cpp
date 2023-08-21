@@ -1,4 +1,4 @@
-# hikvision-recorder-qt
+# hikvision-ip-camera-video-recorder (c++)
 ## for linux 64-bit
 
 ```
