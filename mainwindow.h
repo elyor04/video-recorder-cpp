@@ -1,9 +1,9 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QMainWindow>
-#include "hkipcamera.h"
+#include "HKIPcamera/hkipcamera.h"
 #include <opencv2/opencv.hpp>
+#include <QMainWindow>
 #include <QSystemTrayIcon>
 #include <QString>
 #include <QTimer>

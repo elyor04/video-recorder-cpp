@@ -50,7 +50,7 @@ LIBS += -L$$PWD/HKIPcamera/lib/HCNetSDKCom/ \
     -lStreamTransClient \
     -lSystemTransform
 
-LIBS += -L$$PWD/../../../../../usr/local/lib/ \
+LIBS += -L/usr/local/lib/ \
     -lopencv_calib3d \
     -lopencv_core \
     -lopencv_dnn \
@@ -68,4 +68,4 @@ LIBS += -L$$PWD/../../../../../usr/local/lib/ \
     -lopencv_videoio
 
 INCLUDEPATH += $$PWD/HKIPcamera/inc
-INCLUDEPATH += $$PWD/../../../../../usr/local/include/opencv4
+INCLUDEPATH += /usr/local/include/opencv4
