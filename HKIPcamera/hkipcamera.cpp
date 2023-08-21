@@ -1,4 +1,4 @@
-#include "HKIPcamera/hkipcamera.h"
+#include "./hkipcamera.h"
 #include "LinuxPlayM4.h"
 #include <cstdio>
 #include <cstring>
