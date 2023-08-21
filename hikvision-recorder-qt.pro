@@ -11,11 +11,11 @@ CONFIG += c++17
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
-    HKIPcamera.cpp
+    HKIPcamera/hkipcamera.cpp
 
 HEADERS += \
     mainwindow.h \
-    HKIPcamera.h
+    HKIPcamera/hkipcamera.h
 
 FORMS += \
     mainwindow.ui
@@ -25,7 +25,7 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-LIBS += -L$$PWD/lib/ \
+LIBS += -L$$PWD/HKIPcamera/lib/ \
     -lAudioRender \
     -lHCCore \
     -lhcnetsdk \
@@ -35,7 +35,7 @@ LIBS += -L$$PWD/lib/ \
     -lSuperRender \
     -lz
 
-LIBS += -L$$PWD/lib/HCNetSDKCom/ \
+LIBS += -L$$PWD/HKIPcamera/lib/HCNetSDKCom/ \
     -lanalyzedata \
     -lAudioIntercom \
     -lHCAlarm \
@@ -67,5 +67,5 @@ LIBS += -L$$PWD/../../../../../usr/local/lib/ \
     -lopencv_video \
     -lopencv_videoio
 
-INCLUDEPATH += $$PWD/inc
+INCLUDEPATH += $$PWD/HKIPcamera/inc
 INCLUDEPATH += $$PWD/../../../../../usr/local/include/opencv4
