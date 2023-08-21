@@ -1,6 +1,5 @@
 # hikvision-recorder-qt
 
-## don't pay attention down below (not enough instructions yet)
 ```
 sudo apt-get install intel-opencl-icd
 ```
