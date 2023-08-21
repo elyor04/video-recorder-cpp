@@ -28,7 +28,6 @@ public:
     NET_DVR_DEVICEINFO_V30 struDeviceInfo_;
     IMAGEDATACALLBACK fImageDataCallBack_;
     void* pUser_;
-    bool useOcl_;
 
 private:
     bool OpenCamera(char *ip, char *usr, char *password, WORD port);
