@@ -25,7 +25,7 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-LIBS += -L$$PWD/../../hikvision-sdk-all/lib/ \
+LIBS += -L$$PWD/lib/ \
     -lAudioRender \
     -lHCCore \
     -lhcnetsdk \
@@ -35,7 +35,7 @@ LIBS += -L$$PWD/../../hikvision-sdk-all/lib/ \
     -lSuperRender \
     -lz
 
-LIBS += -L$$PWD/../../hikvision-sdk-all/lib/HCNetSDKCom/ \
+LIBS += -L$$PWD/lib/HCNetSDKCom/ \
     -lanalyzedata \
     -lAudioIntercom \
     -lHCAlarm \
@@ -67,5 +67,5 @@ LIBS += -L$$PWD/../../../../../usr/local/lib/ \
     -lopencv_video \
     -lopencv_videoio
 
-INCLUDEPATH += $$PWD/../../hikvision-sdk-all/inc
+INCLUDEPATH += $$PWD/inc
 INCLUDEPATH += $$PWD/../../../../../usr/local/include/opencv4
