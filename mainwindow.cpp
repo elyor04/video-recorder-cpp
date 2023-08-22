@@ -136,6 +136,7 @@ void MainWindow::_init() {
         icon_m->addAction(act3);
     }
 
+    setWindowIcon(icon_i);
     trayIcon->setIcon(icon_i);
     trayIcon->setContextMenu(icon_m);
     QObject::connect(trayIcon, &QSystemTrayIcon::activated, this, &MainWindow::activatedIcon);

@@ -74,27 +74,27 @@ typedef void * PLAYM4_HDC;
 #define  PLAYM4_NEED_LARGER_BUFFER     34  //add by pzj 20130528
 #define  PLAYM4_FAIL_UNKNOWN		   99   //Fail, but the reason is unknown;	
 
-//Error Code of Fisheye Module 
-#define PLAYM4_FEC_ERR_ENABLEFAIL				100 // Loading fisheye module failed.
-#define PLAYM4_FEC_ERR_NOTENABLE				101 // The fisheye module is not loaded.
-#define PLAYM4_FEC_ERR_NOSUBPORT				102 // The sub port is not allocated.
-#define PLAYM4_FEC_ERR_PARAMNOTINIT				103 // No initialized port parameters.
-#define PLAYM4_FEC_ERR_SUBPORTOVER				104 // The sub port is occupied.
-#define PLAYM4_FEC_ERR_EFFECTNOTSUPPORT			105 // This function is not supported under this mounting type.
-#define PLAYM4_FEC_ERR_INVALIDWND				106 // Illegal window.
-#define PLAYM4_FEC_ERR_PTZOVERFLOW				107 // PTZ position is out of limit.
-#define PLAYM4_FEC_ERR_RADIUSINVALID			108 // Illegal parameters of the circle center
-#define PLAYM4_FEC_ERR_UPDATENOTSUPPORT			109 // Specified mounting type and dewarping effect. Updating parameters is not supported.
-#define PLAYM4_FEC_ERR_NOPLAYPORT				110 // The player port is not enabled.
-#define PLAYM4_FEC_ERR_PARAMVALID				111 // The parameter is empty.
-#define PLAYM4_FEC_ERR_INVALIDPORT				112 // Illegal sub port
-#define PLAYM4_FEC_ERR_PTZZOOMOVER				113 // The PTZ dewarping range is out of limit.
-#define PLAYM4_FEC_ERR_OVERMAXPORT				114 // No more dewarping channel is allowed. Up to four channels are supported.
-#define PLAYM4_FEC_ERR_ENABLED                  115 // The fisheye module of this port is enabled.
-#define PLAYM4_FEC_ERR_D3DACCENOTENABLE			116 // D3D acceleration is not enabled-Error code of fisheye in the Windows system-not available for Linux system
-#define PLAYM4_FEC_ERR_PLACETYPE                117 // Invalid mounting type, one player port corresponds to one mounting type.
-#define PLAYM4_FEC_ERR_NULLWND                  118 // The configured fisheye window hWnd is null or the fisheye port window changed.
-#define PLAYM4_FEC_ERR_CorrectType              119 // The dewarping type already exists. Only one dewarping type can be enabled for one player port (except PTZ dewarping). And only one channel is supported when setting 180 panorama dewarping. 
+//鱼眼功能错误码
+#define PLAYM4_FEC_ERR_ENABLEFAIL				100 // 鱼眼模块加载失败
+#define PLAYM4_FEC_ERR_NOTENABLE				101 // 鱼眼模块没有加载
+#define PLAYM4_FEC_ERR_NOSUBPORT				102 // 子端口没有分配
+#define PLAYM4_FEC_ERR_PARAMNOTINIT				103 // 没有初始化对应端口的参数
+#define PLAYM4_FEC_ERR_SUBPORTOVER				104 // 子端口已经用完
+#define PLAYM4_FEC_ERR_EFFECTNOTSUPPORT			105 // 该安装方式下这种效果不支持
+#define PLAYM4_FEC_ERR_INVALIDWND				106 // 非法的窗口
+#define PLAYM4_FEC_ERR_PTZOVERFLOW				107 // PTZ位置越界
+#define PLAYM4_FEC_ERR_RADIUSINVALID			108 // 圆心参数非法
+#define PLAYM4_FEC_ERR_UPDATENOTSUPPORT			109 // 指定的安装方式和矫正效果，该参数更新不支持
+#define PLAYM4_FEC_ERR_NOPLAYPORT				110 // 播放库端口没有启用
+#define PLAYM4_FEC_ERR_PARAMVALID				111 // 参数为空
+#define PLAYM4_FEC_ERR_INVALIDPORT				112 // 非法子端口
+#define PLAYM4_FEC_ERR_PTZZOOMOVER				113 // PTZ矫正范围越界
+#define PLAYM4_FEC_ERR_OVERMAXPORT				114 // 矫正通道饱和，最大支持的矫正通道为四个
+#define PLAYM4_FEC_ERR_ENABLED                  115 // 该端口已经启用了鱼眼模块
+#define PLAYM4_FEC_ERR_D3DACCENOTENABLE			116 // D3D加速没有开启-windows鱼眼错误码-Linux无
+#define PLAYM4_FEC_ERR_PLACETYPE                117 // 安装方式不对.一个播放库port，对应一种安装方式
+#define PLAYM4_FEC_ERR_NULLWND                  118 // 设置的鱼眼窗口hWnd为null或者鱼眼port的窗口更换
+#define PLAYM4_FEC_ERR_CorrectType              119 // 矫正方式已有,不能开多个,一个播放库port,除了PTZ,其他矫正方式只能开一路;且设置180度矫正时只能为单独的一路。
 
 //Max display regions.
 #define MAX_DISPLAY_WND 4
@@ -138,34 +138,34 @@ typedef void * PLAYM4_HDC;
 #define SUPPORT_SSE         128
 #define SUPPORT_MMX			256 
 
-// The following macro definitions are for HIK_MEDIAINFO structure
-#define FOURCC_HKMI			0x484B4D49	// Mark of "HKMI" HIK_MEDIAINFO structure
-// System packaging format	
-#define SYSTEM_NULL			0x0				// No system layer, audio stream or video stream	
-#define SYSTEM_HIK          0x1				// Hikvision file layer
-#define SYSTEM_MPEG2_PS     0x2				// PS packaging
-#define SYSTEM_MPEG2_TS     0x3				// TS packaging
-#define SYSTEM_RTP          0x4				// RTP packaging
-#define SYSTEM_RTPHIK       0x401				// RTP packaging
+// 以下宏定义用于HIK_MEDIAINFO结构
+#define FOURCC_HKMI			0x484B4D49	// "HKMI" HIK_MEDIAINFO结构标记
+// 系统封装格式	
+#define SYSTEM_NULL			0x0				// 没有系统层，纯音频流或视频流	
+#define SYSTEM_HIK          0x1				// 海康文件层
+#define SYSTEM_MPEG2_PS     0x2				// PS封装
+#define SYSTEM_MPEG2_TS     0x3				// TS封装
+#define SYSTEM_RTP          0x4				// rtp封装
+#define SYSTEM_RTPHIK       0x401				// rtp封装
 
-// Video encoding type
-#define VIDEO_NULL          0x0 // No video
-#define VIDEO_H264          0x1 // This definition is available for both the standard H.264 and hivision H.264
-#define VIDEO_MPEG2			0x2	// Standard MPEG2
-#define VIDEO_MPEG4         0x3 // Standard MPEG4
+// 视频编码类型
+#define VIDEO_NULL          0x0 // 没有视频
+#define VIDEO_H264          0x1 // 标准H.264和海康H.264都可以用这个定义
+#define VIDEO_MPEG2			0x2	// 标准MPEG2
+#define VIDEO_MPEG4         0x3 // 标准MPEG4
 #define VIDEO_MJPEG			0x4
 #define VIDEO_AVC264        0x0100
 
-// Audio Encoding Type
-#define AUDIO_NULL          0x0000 // No audio
+// 音频编码类型
+#define AUDIO_NULL          0x0000 // 没有音频
 #define AUDIO_ADPCM         0x1000 // ADPCM 
-#define AUDIO_MPEG          0x2000 // MPEG series audio, the decoder self-adapts to every MPEG audio.
+#define AUDIO_MPEG          0x2000 // MPEG 系列音频，解码器能自适应各种MPEG音频
 #define AUDIO_AAC           0x2001 // AAC
-#define AUDIO_RAW_DATA8     0x7000 // Original data with the sampling rate of 8k
-#define AUDIO_RAW_UDATA16   0x7001 // Original data with the sampling rate of 16k, i.e., L16
-// G Series Audio
-#define AUDIO_RAW_DATA8		0x7000      //Original data with the sampling rate of 8k
-#define AUDIO_RAW_UDATA16	0x7001      //Original data with the sampling rate of 16k, i.e., L16
+#define AUDIO_RAW_DATA8     0x7000 //采样率为8k的原始数据
+#define AUDIO_RAW_UDATA16   0x7001 //采样率为16k的原始数据，即L16
+// G系列音频
+#define AUDIO_RAW_DATA8		0x7000      //采样率为8k的原始数据
+#define AUDIO_RAW_UDATA16	0x7001      //采样率为16k的原始数据，即L16
 #define AUDIO_G711_U		0x7110
 #define AUDIO_G711_A		0x7111
 #define AUDIO_G722_1		0x7221
@@ -176,15 +176,15 @@ typedef void * PLAYM4_HDC;
 #define AUDIO_G729          0x7290
 #define AUDIO_AMR_NB		0x3000
 
-#define SYNCDATA_VEH	    1 //Synchronize data: Mobile information	
-#define SYNCDATA_IVS	    2 //Synchronize data: VCA information
+#define SYNCDATA_VEH	    1 //同步数据:车载信息	
+#define SYNCDATA_IVS	    2 //同步数据:智能信息
 
 //motion flow type
 #define	MOTION_FLOW_NONE			0
 #define MOTION_FLOW_CPU				1
 #define MOTION_FLOW_GPU				2
 
-//Encryption Type of Audio and Video
+//音视频加密类型
 #define ENCRYPT_AES_3R_VIDEO     1
 #define ENCRYPT_AES_10R_VIDEO    2
 #define ENCRYPT_AES_3R_AUDIO     1
@@ -193,12 +193,12 @@ typedef void * PLAYM4_HDC;
 
 #ifndef PLAYM4_ADDITION_INFO_TAG
 #define PLAYM4_ADDITION_INFO_TAG
-typedef struct _PLAYM4_ADDITION_INFO_     //Interaction information structure
+typedef struct _PLAYM4_ADDITION_INFO_     //交互信息结构
 {
-    unsigned char*  pData;			//Attachment data
-    unsigned int    dwDatalen;		//Length of attachment data
-    unsigned int	dwDataType;		//Data type
-    unsigned int	dwTimeStamp;	//Relative time stamp
+    unsigned char*  pData;			//附件数据
+    unsigned int    dwDatalen;		//附件数据长度
+    unsigned int	dwDataType;		//数据类型
+    unsigned int	dwTimeStamp;	//相对时间戳
 } PLAYM4_ADDITION_INFO;
 #endif
 
@@ -232,7 +232,7 @@ typedef struct
     SYSTEMTIME *pErrorTime;
     int nErrorLostFrameNum;
     int nErrorFrameSize;
-}FRAME_POS, *PFRAME_POS;
+}FRAME_POS,*PFRAME_POS;
 
 //Frame Info
 typedef struct
@@ -267,9 +267,9 @@ typedef struct
 
 typedef struct SYNCDATA_INFO 
 {
-    unsigned int dwDataType;        //Attachment information type which is synchronous with the stream data: VCA Information, Mobile Information
-    unsigned int dwDataLen;         //Length of attachment information
-    unsigned char* pData;           //Pointer of attachment information structure, e.g., IVS_INFO structure
+    unsigned int dwDataType;        //和码流数据同步的附属信息类型，目前有：智能信息，车载信息
+    unsigned int dwDataLen;         //附属信息数据长度
+    unsigned char* pData;           //指向附属信息数据结构的指针,比如IVS_INFO结构
 } SYNCDATA_INFO;
 
 #ifndef _HIK_MEDIAINFO_FLAG_
@@ -277,19 +277,19 @@ typedef struct SYNCDATA_INFO
 typedef struct _HIK_MEDIAINFO_				// modified by gb 080425
 {
     unsigned int    media_fourcc;			// "HKMI": 0x484B4D49 Hikvision Media Information
-    unsigned short  media_version;			// Version No.: The version No. of this information structure, the current version 0x0101, i.e., Version 1.01, 01-Main version                                               No., 01: Sub version No.
-    unsigned short  device_id;				// Device ID, which is for tracking or analysis		
+    unsigned short  media_version;			// 版本号：指本信息结构版本号，目前为0x0101,即1.01版本，01：主版本号；01：子版本号。
+    unsigned short  device_id;				// 设备ID，便于/分析			
 
-    unsigned short  system_format;          // System Packaging Layer
-    unsigned short  video_format;           // Video Encoding Type
+    unsigned short  system_format;          // 系统封装层
+    unsigned short  video_format;           // 视频编码类型
 
-    unsigned short  audio_format;           // Audio Encoding Type
-    unsigned char   audio_channels;         // Channel Number 
-    unsigned char   audio_bits_per_sample;  // Bit Rate
-    unsigned int    audio_samplesrate;      // Sampling Rate 
-    unsigned int    audio_bitrate;          // Compressed audio stream rate, unit: bit
+    unsigned short  audio_format;           // 音频编码类型
+    unsigned char   audio_channels;         // 通道数  
+    unsigned char   audio_bits_per_sample;  // 样位率
+    unsigned int    audio_samplesrate;      // 采样率 
+    unsigned int    audio_bitrate;          // 压缩音频码率,单位：bit
 
-    unsigned int    reserved[4];            // Reserved
+    unsigned int    reserved[4];            // 保留
 }HIK_MEDIAINFO;
 #endif
 
@@ -319,70 +319,70 @@ typedef struct
     void* nUser;
 }DISPLAY_INFOEX;
 
-typedef struct PLAYM4_SYSTEM_TIME //Absolute Time 
+typedef struct PLAYM4_SYSTEM_TIME //绝对时间 
 {
-    unsigned int dwYear; //Year
-    unsigned int dwMon;  //Month
-    unsigned int dwDay;  //Day
-    unsigned int dwHour; //Time
-    unsigned int dwMin;  //Minute
-    unsigned int dwSec;  //Second
-    unsigned int dwMs;   //Millisecond
+    unsigned int dwYear; //年
+    unsigned int dwMon;  //月
+    unsigned int dwDay;  //日
+    unsigned int dwHour; //时
+    unsigned int dwMin;  //分
+    unsigned int dwSec;  //秒
+    unsigned int dwMs;   //毫秒
 } PLAYM4_SYSTEM_TIME;
 
 #ifndef CROP_PIC_INFO_TAG
 #define CROP_PIC_INFO_TAG
 typedef struct
 {
-    unsigned char* pDataBuf;      //Buffer for captured data
-    unsigned int   dwPicSize;	  //Actual picture size
-    unsigned int   dwBufSize;      //Data buffer size
-    unsigned int   dwPicWidth;	  //Width of captured picture
-    unsigned int   dwPicHeight;    //Height of captured picture
-    unsigned int   dwReserve;      //Reserved
-    HKRECT*        pCropRect;     //The selected region is NULL, which is same with the old API
+    unsigned char* pDataBuf;      //抓图数据buffer
+    unsigned int   dwPicSize;	  //实际图片大小
+    unsigned int   dwBufSize;      //数据buffer大小
+    unsigned int   dwPicWidth;	  //截图宽
+    unsigned int   dwPicHeight;    //截图高
+    unsigned int   dwReserve;      //多加一个reserve字段
+    HKRECT*        pCropRect;     //选择区域NULL, 同老的抓图接口
 }CROP_PIC_INFO;
 #endif
 
 
 //ENCRYPT Info
 typedef struct{
-    long nVideoEncryptType;  //Video encryption type
-    long nAudioEncryptType;  //Audio encryption type
-    long nSetSecretKey;      //Set or not? 1- Set key, 0- No key is set
+    long nVideoEncryptType;  //视频加密类型
+    long nAudioEncryptType;  //音频加密类型
+    long nSetSecretKey;      //是否设置，1表示设置密钥，0表示没有设置密钥
 }ENCRYPT_INFO;
 
-// Private Information Module Type
+// 私有信息模块类型
 typedef enum _PLAYM4_PRIDATA_RENDER
 {	
-    PLAYM4_RENDER_ANA_INTEL_DATA   = 0x00000001, //VCA
-    PLAYM4_RENDER_MD               = 0x00000002, //Motion Detection
-    PLAYM4_RENDER_ADD_POS          = 0x00000004, //POS Information Overlay
-    PLAYM4_RENDER_ADD_PIC          = 0x00000008, //Picture Information Overlay
-    PLAYM4_RENDER_FIRE_DETCET      = 0x00000010, //Thermal Imaging Information
-    PLAYM4_RENDER_TEM              = 0x00000020, //Temperature Information
+    PLAYM4_RENDER_ANA_INTEL_DATA   = 0x00000001, //智能分析
+    PLAYM4_RENDER_MD               = 0x00000002, //移动侦测
+    PLAYM4_RENDER_ADD_POS          = 0x00000004, //POS信息后叠加
+    PLAYM4_RENDER_ADD_PIC          = 0x00000008, //图片叠加信息
+    PLAYM4_RENDER_FIRE_DETCET      = 0x00000010, //热成像信息
+    PLAYM4_RENDER_TEM              = 0x00000020, //温度信息
 }PLAYM4_PRIDATA_RENDER;
 
 typedef enum _PLAYM4_FIRE_ALARM
 {
-    PLAYM4_FIRE_FRAME_DIS           = 0x00000001, //Display Fire Source Frame
-    PLAYM4_FIRE_MAX_TEMP            = 0x00000002, //Highest Temperature
-    PLAYM4_FIRE_MAX_TEMP_POSITION   = 0x00000004, //Display Position of Highest Temperature
-    PLAYM4_FIRE_DISTANCE            = 0x00000008, //Distance from Highest Temperature
+    PLAYM4_FIRE_FRAME_DIS           = 0x00000001, //火点框显示
+    PLAYM4_FIRE_MAX_TEMP            = 0x00000002, //最高温度
+    PLAYM4_FIRE_MAX_TEMP_POSITION   = 0x00000004, //最高温度位置显示
+    PLAYM4_FIRE_DISTANCE            = 0x00000008, //最高温度距离
 }PLAYM4_FIRE_ALARM;
 
 typedef enum _PLAYM4_TEM_FLAG
 {
-    PLAYM4_TEM_REGION_BOX             = 0x00000001, //Measure by rectangle
-    PLAYM4_TEM_REGION_LINE            = 0x00000002, //Measure by line
-    PLAYM4_TEM_REGION_POINT           = 0x00000004, //Measure by point
+    PLAYM4_TEM_REGION_BOX             = 0x00000001, //框测温
+    PLAYM4_TEM_REGION_LINE            = 0x00000002, //线测温
+    PLAYM4_TEM_REGION_POINT           = 0x00000004, //点测温
 }PLAYM4_TEM_FLAG;
 
 
 //////////////////////////////////////////////////////////////////////////////
-//Recommended APIs 
+//API-Proposed Interface 建议使用的接口
 //////////////////////////////////////////////////////////////////////////////
-///<Initialize
+///<初始化
 int  PlayM4_GetPort(int* nPort);
 int  PlayM4_FreePort(int nPort);
 int  PlayM4_OpenFile(int nPort,char * sFileName);
@@ -393,15 +393,15 @@ int  PlayM4_OpenStream(int nPort,unsigned char * pFileHeadBuf,unsigned int nSize
 int  PlayM4_CloseStream(int nPort);
 int  PlayM4_InputData(int nPort,unsigned char * pBuf,unsigned int nSize);
 
-///<Index
+///<索引
 int  PlayM4_SetFileRefCallBack(int nPort, void (CALLBACK *pFileRefDone)(unsigned int nPort,void* nUser),void* nUser);
 int  PlayM4_GetRefValue(int nPort,unsigned char  *pBuffer, unsigned int *pSize);
-int  PlayM4_GetRefValueEx(int nPort,unsigned char  *pBuffer, unsigned int *pSize);///<Add frame type callback
+int  PlayM4_GetRefValueEx(int nPort,unsigned char  *pBuffer, unsigned int *pSize);///<增加帧类型回调
 int  PlayM4_SetRefValue(int nPort,unsigned char  *pBuffer, unsigned int nSize);
 int  PlayM4_GetKeyFramePos(int nPort,unsigned int nValue, unsigned int nType, PFRAME_POS pFramePos);
 int  PlayM4_GetNextKeyFramePos(int nPort,unsigned int nValue, unsigned int nType, PFRAME_POS pFramePos);
 
-///<Play Control
+///<播放控制
 int  PlayM4_Play(int nPort, PLAYM4_HWND hWnd);
 int  PlayM4_Stop(int nPort);
 int  PlayM4_Pause(int nPort,unsigned int nPause);
@@ -413,7 +413,7 @@ int  PlayM4_ReversePlay(int nPort);
 int  PlayM4_RefreshPlay(int nPort);
 int  PlayM4_RefreshPlayEx(int nPort, unsigned int nRegionNum);
 
-///<Play Audio
+///<声音播放
 int  PlayM4_PlaySound(int nPort);
 int  PlayM4_StopSound();
 int  PlayM4_PlaySoundShare(int nPort);
@@ -421,7 +421,7 @@ int  PlayM4_StopSoundShare(int nPort);
 int  PlayM4_SetVolume(int nPort,unsigned short nVolume);
 unsigned short  PlayM4_GetVolume(int nPort);
 
-///<Get Information
+///<获取信息
 int  PlayM4_SetPlayPos(int nPort,float fRelativePos);
 float  PlayM4_GetPlayPos(int nPort);
 unsigned int  PlayM4_GetFileTime(int nPort);
@@ -438,7 +438,7 @@ unsigned int  PlayM4_GetSpecialData(int nPort);
 int           PlayM4_GetPictureSize(int nPort,int *pWidth,int *pHeight);
 int           PlayM4_SetFileEndCallback(int nPort, void(CALLBACK*FileEndCallback)(int nPort, void *pUser), void *pUser);
 
-///<Cache Operation
+///<缓存操作
 unsigned int  PlayM4_GetSourceBufferRemain(int nPort);
 int           PlayM4_ResetSourceBuffer(int nPort);
 int           PlayM4_ResetBuffer(int nPort,unsigned int nBufType);
@@ -446,14 +446,14 @@ unsigned int  PlayM4_GetBufferValue(int nPort,unsigned int nBufType);
 int           PlayM4_SetDisplayBuf(int nPort, unsigned int nNum);
 unsigned int  PlayM4_GetDisplayBuf(int nPort);
 
-///<Capture
+///<抓图
 int  PlayM4_SetJpegQuality(int nQuality);
 int  PlayM4_GetBMP(int nPort,unsigned char * pBitmap,unsigned int nBufSize,unsigned int* pBmpSize);
 int  PlayM4_GetJPEG(int nPort,unsigned char * pJpeg,unsigned int nBufSize,unsigned int* pJpegSize);
 int  PlayM4_ConvertToBmpFile(char * pBuf,int nSize,int nWidth,int nHeight,int nType,char *sFileName);
 int  PlayM4_ConvertToJpegFile(char * pBuf,int nSize,int nWidth,int nHeight,int nType,char *sFileName);
 
-///<Decode
+///<解码
 int  PlayM4_SetSecretKey(int nPort, int lKeyType, char *pSecretKey, int lKeyLen);
 int  PlayM4_ThrowBFrameNum(int nPort,unsigned int nNum);
 int  PlayM4_SetDecCBStream(int nPort,unsigned int nStream);
@@ -461,12 +461,12 @@ int  PlayM4_SetDecodeFrameType(int nPort,unsigned int nFrameType);
 int  PlayM4_SkipErrorData(int nPort, int bSkip);
 int  PlayM4_SetDecCallBackMend(int nPort,void (CALLBACK* DecCBFun)(int nPort,char * pBuf,int nSize,FRAME_INFO * pFrameInfo, void* nUser,int nReserved2), void* nUser);
 int  PlayM4_SetDecCallBackExMend(int nPort, void (CALLBACK* DecCBFun)(int nPort, char* pBuf, int nSize, FRAME_INFO* pFrameInfo, void* nUser, int nReserved2), char* pDest, int nDestSize, void* nUser);
-// Encryption stream callback, nType=0: Call back when the stream encryption mark changed. nType=1: The encryption bit of the stream is called back
+// 加密码流回调,nType=0表示码流加密标记位发生变化就回调，nType=1表示码流有加密位发生回调
 int  PlayM4_SetEncryptTypeCallBack(int nPort, unsigned int nType, void (CALLBACK* EncryptTypeCBFun)(int nPort, ENCRYPT_INFO* pEncryptInfo, void* nUser, int nReserved2), void* nUser);
 
-///<Display
-int  PlayM4_SetDisplayRegion(int nPort,unsigned int nRegionNum, HKRECT *pSrcRect, PLAYM4_HWND hDestWnd, int bEnable);///<Digital Zoom
-int  PlayM4_SetDisplayRegionOnWnd(int nPort,unsigned int nRegionNum, HKRECT *pSrcRect, int bEnable);///<Window Division
+///<显示
+int  PlayM4_SetDisplayRegion(int nPort,unsigned int nRegionNum, HKRECT *pSrcRect, PLAYM4_HWND hDestWnd, int bEnable);///<电子放大
+int  PlayM4_SetDisplayRegionOnWnd(int nPort,unsigned int nRegionNum, HKRECT *pSrcRect, int bEnable);///<多窗口分割接口
 int  PlayM4_SetDisplayCallBack(int nPort,void (CALLBACK* DisplayCBFun)(int nPort,char * pBuf,int nSize,int nWidth,int nHeight,int nStamp,int nType,int nReserved));
 int  PlayM4_SetDisplayCallBackEx(int nPort,void (CALLBACK* DisplayCBFun)(DISPLAY_INFO *pstDisplayInfo), void* nUser);
 int  PlayM4_RegisterDrawFun(int nPort,void (CALLBACK* DrawFun)(int nPort,PLAYM4_HDC hDc,void* nUser),void* nUser);
@@ -475,30 +475,30 @@ int  PlayM4_SetCheckWatermarkCallBack(int nPort, void(CALLBACK* funCheckWatermar
 int  PlayM4_SetDisplayType(int nPort, int nType);
 int  PlayM4_GetDisplayType(int nPort);
 
-// VCA Information Switch
+// 智能信息开关
 PLAYM4_API int __stdcall PlayM4_RenderPrivateData(int nPort, int nIntelType, int bTrue);
 PLAYM4_API int __stdcall PlayM4_RenderPrivateDataEx(int nPort, int nIntelType, int nSubType, int bTrue);
-PLAYM4_API int __stdcall PlayM4_SetConfigFontPath(int nPort, char* pFontPath);///<Set font library path for OSD- Set before playing.
+PLAYM4_API int __stdcall PlayM4_SetConfigFontPath(int nPort, char* pFontPath);///<设置字符叠加的字体库路径-play前设置
 
-//lType: 1  refers to get the PTZ information of displayed frame. It is stored in the pInfo with specified structure type, and plLen returns length information. First you should set pInfo = null to get the memory length (plLen) needed to allocate.
+//lType: 1 表示获取当前显示帧PTZ信息。以特定结构体形式存储在pInfo内，plLen返回长度信息;起先传入pInfo = null，可以获取出需要分配的内存长度plLen
 PLAYM4_API int __stdcall PlayM4_GetStreamAdditionalInfo(int nPort, int lType, unsigned char* pInfo, int* plLen);
 
-///<Process Image
-#define R_ANGLE_0   -1  //No rotation
-#define R_ANGLE_L90  0  //Rotate left 90 degree
-#define R_ANGLE_R90  1  //Rotate right 90 degree
-#define R_ANGLE_180  2  //Rotate 180 degree
+///<图像处理
+#define R_ANGLE_0   -1  //不旋转
+#define R_ANGLE_L90  0  //向左旋转90度
+#define R_ANGLE_R90  1  //向右旋转90度
+#define R_ANGLE_180  2  //旋转180度
 
 PLAYM4_API int __stdcall PlayM4_SetRotateAngle(int nPort, unsigned int nRegionNum, unsigned int dwType);
 
-///<Others
+///<其他
 unsigned int  PlayM4_GetFileHeadLength();
 unsigned int  PlayM4_GetSdkVersion();
 unsigned int  PlayM4_GetLastError(int nPort);
-//The predefined value of dwGroupIndex is ranging from 0 to 3. For the first version, synchronization function is canceled, so it should be processed in same closestream
+//dwGroupIndex 暂约定取值0~3，第一版本取消同步只能同个closestream处理
 PLAYM4_API int __stdcall PlayM4_SetSycGroup(int nPort, unsigned int dwGroupIndex);
 
-///<SDP Streaming//////////////////////////////////////////////////////////////////////////
+///<SDP取流接口//////////////////////////////////////////////////////////////////////////
 #ifndef PLAYM4_SESSION_INFO_TAG
 #define PLAYM4_SESSION_INFO_TAG
 //nProtocolType
@@ -506,57 +506,57 @@ PLAYM4_API int __stdcall PlayM4_SetSycGroup(int nPort, unsigned int dwGroupIndex
 //nSessionInfoType
 #define PLAYM4_SESSION_INFO_SDP 1
 
-typedef struct _PLAYM4_SESSION_INFO_     //Interaction information structure
+typedef struct _PLAYM4_SESSION_INFO_     //交互信息结构
 {
-    int            nSessionInfoType;   //Interaction information type, only SDP is supported.
-    int            nSessionInfoLen;    //Length of interaction information
-    unsigned char* pSessionInfoData;   //Interaction information data
+    int            nSessionInfoType;   //交互信息类型，暂时只支持SDP
+    int            nSessionInfoLen;    //交互信息长度
+    unsigned char* pSessionInfoData;   //交互信息数据
 
 } PLAYM4_SESSION_INFO;
 #endif
 
 PLAYM4_API int __stdcall PlayM4_OpenStreamAdvanced(int nPort, int nProtocolType, PLAYM4_SESSION_INFO* pstSessionInfo, unsigned int nBufPoolSize);
 
-///<Fisheye Related//////////////////////////////////////////////////////////////////////////
+///<鱼眼相关接口//////////////////////////////////////////////////////////////////////////
 #ifndef FISH_EYE_TAG
 #define FISH_EYE_TAG
 
-// Mounting Type
+// 安装类型
 typedef enum tagFECPlaceType
 {
-    FEC_PLACE_WALL    = 0x1, // Wall Mounting (horizontal normal)
-    FEC_PLACE_FLOOR   = 0x2, // Ground Mounting (upward normal)
-    FEC_PLACE_CEILING = 0x3, // Ceiling Mounting (downward normal)
+    FEC_PLACE_WALL    = 0x1,        // 壁装方式     (法线水平)
+    FEC_PLACE_FLOOR   = 0x2,        // 地面安装     (法线向上)
+    FEC_PLACE_CEILING = 0x3,        // 顶装方式     (法线向下)
 
 }FECPLACETYPE;
 
 typedef enum tagFECCorrectType
 {
-    FEC_CORRECT_NULL = 0x0, // No dewarping
-    FEC_CORRECT_PTZ = 0x100, // PTZ
-    FEC_CORRECT_180 = 0x200, // 180 degree dewarping (corresponds to 2P)
-    FEC_CORRECT_360 = 0x300, // 360 panoramic dewarping (corresponds to 1P）
-	FEC_CORRECT_LAT = 0x400         // Latitude Expansion
+    FEC_CORRECT_NULL = 0x0,         // 不矫正
+    FEC_CORRECT_PTZ = 0x100,		// PTZ
+    FEC_CORRECT_180 = 0x200,		// 180度矫正  （对应2P）
+    FEC_CORRECT_360 = 0x300,		// 360全景矫正 （对应1P）
+    FEC_CORRECT_LAT = 0x400         // 纬度展开
 
 }FECCORRECTTYPE;
 
 typedef struct tagCycleParam
 {
-    float	fRadiusLeft;	// X-Coordinate of circle left
-    float	fRadiusRight;	// X-Coordinate of circle right
-    float   fRadiusTop;		// Y-Coordinate of circle top
-    float   fRadiusBottom;	// Y-Coordinate of circle bottom
+    float	fRadiusLeft;	// 圆的最左边X坐标
+    float	fRadiusRight;	// 圆的最右边X坐标
+    float   fRadiusTop;		// 圆的最上边Y坐标
+    float   fRadiusBottom;	// 圆的最下边Y坐标
 
 }CYCLEPARAM;
 
 typedef struct tagPTZParam
 {
-    float fPTZPositionX;		// Center position of PTZ display, X-Coordinate
-    float fPTZPositionY;		// Center position of PTZ display, Y-Coordinate	
+    float fPTZPositionX;		// PTZ 显示的中心位置 X坐标
+    float fPTZPositionY;		// PTZ 显示的中心位置 Y坐标	
 
 }PTZPARAM;
 
-// Update Mark Variable Definitions
+// 更新标记变量定义
 
 #define 		FEC_UPDATE_RADIUS			 0x1
 #define 		FEC_UPDATE_PTZZOOM			 0x2
@@ -565,43 +565,43 @@ typedef struct tagPTZParam
 #define         FEC_UPDATT_PTZCOLOR          0x10
 
 
-// Color Structure
+// 色彩结构体
 typedef struct tagFECColor
 {
-    unsigned char nR;     // R Component
-    unsigned char nG;	  // G Component
-    unsigned char nB;     // B Component
-    unsigned char nAlpha; // Alpha Component
+    unsigned char nR;     // R分量
+    unsigned char nG;	  // G分量
+    unsigned char nB;     // B分量
+    unsigned char nAlpha; // Alpha分量
 }FECCOLOR;
 
 typedef struct tagFECParam
 {
-    unsigned int 	nUpDateType;			// Updated type
+    unsigned int 	nUpDateType;			// 更新的类型
 
-    unsigned int	nPlaceAndCorrect;		// Mounting type and dewarping type, get only. When SetParam is invalid, this value is the sum of mounting type and dewarping
+    unsigned int	nPlaceAndCorrect;		// 安装方式和矫正方式，只能用于获取，SetParam的时候无效,该值表示安装方式和矫正方式的和
 
-    PTZPARAM		stPTZParam;				// PTZ dewarping parameters
+    PTZPARAM		stPTZParam;				// PTZ 校正的参数
 
-    CYCLEPARAM		stCycleParam;			// Circle center parameter of fisheye image
+    CYCLEPARAM		stCycleParam;			// 鱼眼图像圆心参数
 
-    float			fZoom;					// PTZ display parameter
+    float			fZoom;					// PTZ 显示的范围参数
 
-    float			fWideScanOffset;		// Offset angle of 180 degree or 360 panoramic dewarping
-    FECCOLOR        stPTZColor;             // PTZ Color
-    int				nResver[15];			// Reserved field
+    float			fWideScanOffset;		// 180或者360度校正的偏移角度
+    FECCOLOR        stPTZColor;             // PTZ颜色
+    int				nResver[15];			// 保留字段
 
 }FISHEYEPARAM;
 
-// PTZ Display Mode on Original Fisheye Image
+// PTZ在原始鱼眼图上轮廓的显示模式
 typedef enum tagFECShowMode
 {
-    FEC_PTZ_OUTLINE_NULL, // No display
-    FEC_PTZ_OUTLINE_RECT, // Display in rectangle
-    FEC_PTZ_OUTLINE_RANGE, // Display real region
+    FEC_PTZ_OUTLINE_NULL,   // 不显示
+    FEC_PTZ_OUTLINE_RECT,   // 矩形显示
+    FEC_PTZ_OUTLINE_RANGE,  // 真实区域显示
 }FECSHOWMODE;
 
-#define    FEC_JPEG   0  // JPEG Capture
-#define    FEC_BMP    1  // BMP Capture
+#define    FEC_JPEG   0  // JPEG抓图
+#define    FEC_BMP    1  // BMP 抓图
 
 typedef void (__stdcall * FISHEYE_CallBack )(void* pUser, unsigned int nPort, unsigned int nCBType, void * hDC, unsigned int nWidth, unsigned int nHeight); 
 
@@ -609,31 +609,31 @@ typedef void (__stdcall * FISHEYE_CallBack )(void* pUser, unsigned int nPort, un
 
 
 
-// Enable fisheye
+// 启用鱼眼
 PLAYM4_API int __stdcall PlayM4_FEC_Enable(int nPort);
 
-// Close fisheye module
+// 关闭鱼眼模块
 PLAYM4_API int __stdcall PlayM4_FEC_Disable(int nPort);
 
-// Get the sub port of fisheye dewarping [1~31] 
+// 获取鱼眼矫正处理子端口 [1~31] 
 PLAYM4_API int  __stdcall PlayM4_FEC_GetPort(int nPort , unsigned int* nSubPort , FECPLACETYPE emPlaceType , FECCORRECTTYPE emCorrectType);
 
-// Delete the sub port of fisheye dewarping
+// 删除鱼眼矫正处理子端口
 PLAYM4_API int __stdcall PlayM4_FEC_DelPort(int nPort , unsigned int nSubPort);
 
-// Set fisheye dewarping parameters
+// 设置鱼眼矫正参数
 PLAYM4_API int __stdcall PlayM4_FEC_SetParam(int nPort , unsigned int nSubPort , FISHEYEPARAM * pPara);
 
-// Get fisheye dewarping parameters
+// 获取鱼眼矫正参数
 PLAYM4_API int __stdcall PlayM4_FEC_GetParam(int nPort , unsigned int nSubPort , FISHEYEPARAM * pPara);
 
-// Set display window, which can be switched at any time
+// 设置显示窗口，可以随时切换
 PLAYM4_API int __stdcall PlayM4_FEC_SetWnd(int nPort , unsigned int nSubPort , void * hWnd);
 
-// Set drawing callback of fisheye window
+// 设置鱼眼窗口的绘图回调
 PLAYM4_API int __stdcall PlayM4_FEC_SetCallBack(int nPort , unsigned int nSubPort , FISHEYE_CallBack cbFunc , void * pUser);
 
-// Fisheye Capture
+// 鱼眼抓图
 PLAYM4_API int __stdcall PlayM4_FEC_Capture(int nPort, unsigned int nSubPort, unsigned int nType, char* pFileName);
 
 PLAYM4_API int __stdcall PlayM4_FEC_GetCurrentPTZPort(int nPort, float fPositionX,float fPositionY, unsigned int *pnPort);
@@ -643,107 +643,107 @@ PLAYM4_API int __stdcall PlayM4_FEC_SetCurrentPTZPort(int nPort, unsigned int nS
 PLAYM4_API int __stdcall PlayM4_FEC_SetPTZOutLineShowMode(int nPort,FECSHOWMODE nPTZShowMode);
 
 
-//Image Enhancement Related --Unsupported APIs//////////////////////////////////////////////////////////////////////////
+//图像增强相关的接口--Unsupported Interface 功能不支持//////////////////////////////////////////////////////////////////////////
 #ifndef PLAYM4_HIKVIE_TAG
 #define PLAYM4_HIKVIE_TAG
 
 typedef struct _PLAYM4_VIE_DYNPARAM_
 {
-    int moduFlag;      //Enabled algorithm processing module, see the definitions in PLAYM4_VIE_MODULES
+    int moduFlag;      //启用的算法处理模块，在PLAYM4_VIE_MODULES中定义
     //如 PLAYM4_VIE_MODU_ADJ | PLAYM4_VIE_MODU_EHAN
-    //After enabling module, the corresponding parameters should be configured.
+    //模块启用后，必须设置相应的参数；
     //PLAYM4_VIE_MODU_ADJ
-    int brightVal;     //Brightness , [-255, 255]
-    int contrastVal;   //Contrast, [-256, 255]
-    int colorVal;      //Saturation, [-256, 255]
+    int brightVal;     //亮度调节值，[-255, 255]
+    int contrastVal;   //对比度调节值，[-256, 255]
+    int colorVal;      //饱和度调节值，[-256, 255]
     //PLAYM4_VIE_MODU_EHAN
-    int toneScale;     //Filtering range, [0, 100]
-    int toneGain;      //Contrast, Global contrast gain, [-256, 255]
-    int toneOffset;    //Brightness, Average brightness offset, [-255, 255]
-    int toneColor;     //Color, color fidelity, [-256, 255]
+    int toneScale;     //滤波范围，[0, 100]
+    int toneGain;      //对比度调节，全局对比度增益值，[-256, 255]
+    int toneOffset;    //亮度调节，亮度平均值偏移，[-255, 255]
+    int toneColor;     //颜色调节，颜色保真值，[-256, 255]
     //PLAYM4_VIE_MODU_DEHAZE
-    int dehazeLevel;   //Defog strength, [0, 255]
-    int dehazeTrans;   //Dehaze strength, [0, 255]
-    int dehazeBright;  //illumination compensation, [0, 255]
+    int dehazeLevel;   //去雾强度，[0, 255]
+    int dehazeTrans;   //透射值，[0, 255]
+    int dehazeBright;  //亮度补偿，[0, 255]
     //PLAYM4_VIE_MODU_DENOISE
-    int denoiseLevel;  //Denoise intensity, [0, 255]
+    int denoiseLevel;  //去噪强度，[0, 255]
     //PLAYM4_VIE_MODU_SHARPEN
-    int usmAmount;     //Sharpen strength, [0, 255]
-    int usmRadius;     //Sharpen radius, [1, 15]
-    int usmThreshold;  //Sharpen threshold, [0, 255]
+    int usmAmount;     //锐化强度，[0, 255]
+    int usmRadius;     //锐化半径，[1, 15]
+    int usmThreshold;  //锐化阈值，[0, 255]
     //PLAYM4_VIE_MODU_DEBLOCK
-    int deblockLevel;  //Sharpen strength, [0, 100]
+    int deblockLevel;  //去块强度，[0, 100]
     //PLAYM4_VIE_MODU_LENS
-    int lensWarp;      //Distortion, [-256, 255]
-    int lensZoom;      //Zoom, [-256, 255]
+    int lensWarp;      //畸变量，[-256, 255]
+    int lensZoom;      //缩放量，[-256, 255]
     //PLAYM4_VIE_MODU_CRB
-    //No response parameter
+    //无响应参数
 } PLAYM4_VIE_PARACONFIG;
 
 typedef enum _PLAYM4_VIE_MODULES
 {
-    PLAYM4_VIE_MODU_ADJ      = 0x00000001, //Basic Adjustment of Image
-    PLAYM4_VIE_MODU_EHAN     = 0x00000002, //Local Enhancement Module
-    PLAYM4_VIE_MODU_DEHAZE   = 0x00000004, //Defog Module
-    PLAYM4_VIE_MODU_DENOISE  = 0x00000008, //Denoise Module
-    PLAYM4_VIE_MODU_SHARPEN  = 0x00000010, //Sharpen Module
-    PLAYM4_VIE_MODU_DEBLOCK  = 0x00000020, //Deblock and Filtering Module
-    PLAYM4_VIE_MODU_CRB      = 0x00000040, //Color Balance Module
-    PLAYM4_VIE_MODU_LENS     = 0x00000080, //Image Distortion Correction Module
+    PLAYM4_VIE_MODU_ADJ      = 0x00000001, //图像基本调节
+    PLAYM4_VIE_MODU_EHAN     = 0x00000002, //局部增强模块
+    PLAYM4_VIE_MODU_DEHAZE   = 0x00000004, //去雾模块
+    PLAYM4_VIE_MODU_DENOISE  = 0x00000008, //去噪模块
+    PLAYM4_VIE_MODU_SHARPEN  = 0x00000010, //锐化模块
+    PLAYM4_VIE_MODU_DEBLOCK  = 0x00000020, //去块滤波模块
+    PLAYM4_VIE_MODU_CRB      = 0x00000040, //色彩平衡模块
+    PLAYM4_VIE_MODU_LENS     = 0x00000080, //镜头畸变矫正模块
 }PLAYM4_VIE_MODULES;
 #endif
 
-//Disable/Enable Module
-//Macros PLAYM4_VIE_MODULES of dwModuFlag, which can be combined.
-//First enable module, and then set module parameters; Before setting, the default parameters will be adopted.
-//After disabling the module, the previous settings will be cleared.
-//Before calling other APIs, you should enable the module via this API, otherwise, error will be returned.
+//设置关闭/开启模块
+//dwModuFlag对应PLAYM4_VIE_MODULES宏,可组合
+//先设置模块开启，再设置模块参数；期间采用默认的参数;
+//关闭模块后，上次设置的参数清空
+//其他接口调用，必须在该接口开启模块后；否则，返回错误
 PLAYM4_API int __stdcall PlayM4_VIE_SetModuConfig(int nPort, int nModuFlag, int bEnable);
 
-//Set image enhancement region, NULL-Full Image. If the image is larger than full image, adopts full image. The minimum region is 16*16 pixels.
-//Supports setting region, up to 4 regions are supported. For the first version, only one region is supported. The regions cannot be overlaid, otherwise, error occurs.
+//设置图像增强区域，NULL全图；超过全图，采用全图；最小区域16*16像素
+//可支持设置区域，最多比较说4个，第一个版本可以只支持一个。多个区域要求不能重叠，有重叠就报错
 PLAYM4_API int __stdcall PlayM4_VIE_SetRegion(int nPort, int nRegNum, HKRECT* pRect);
 
-//Get enabled module
+//获取开启模块
 PLAYM4_API int __stdcall PlayM4_VIE_GetModuConfig(int nPort, int* pdwModuFlag);
 
-//Set parameters
-//The disabled parameter settings will be ignored.
+//设置参数
+//未开启模块的参数设置被忽略
 PLAYM4_API int __stdcall PlayM4_VIE_SetParaConfig(int nPort, PLAYM4_VIE_PARACONFIG* pParaConfig);
 
-//Get enabled module parameters
+//获取开启模块的参数
 PLAYM4_API int __stdcall PlayM4_VIE_GetParaConfig(int nPort, PLAYM4_VIE_PARACONFIG* pParaConfig);
 
 
 
 
-#define PLAYM4_MEDIA_HEAD     1   //System header data
-#define PLAYM4_VIDEO_DATA     2   //Video stream data
-#define PLAYM4_AUDIO_DATA     3   //Audio stream data
-#define PLAYM4_PRIVT_DATA     4   //Private stream data
+#define PLAYM4_MEDIA_HEAD     1   //系统头数据
+#define PLAYM4_VIDEO_DATA     2   //视频流数据
+#define PLAYM4_AUDIO_DATA     3   //音频流数据
+#define PLAYM4_PRIVT_DATA     4   //私有流数据
 
-//Pre-record Data Information--Unsupported APIs////////////////////////
+//预录像数据信息--Unsupported Interface 功能不支持////////////////////////
 typedef struct  
 {
-    long nType;                     // Data type, e.g., file header, video, audio, private data, and so on.
-    long nStamp;                    // Time stamp
-    long nFrameNum;                 // Frame No.
-    long nBufLen;                   // Data length
-    char* pBuf;                     // Frame data, callback by frame
-    PLAYM4_SYSTEM_TIME  stSysTime;  // Global Time
+    long nType;                     // 数据类型，如文件头，视频，音频，私有数据等
+    long nStamp;                    // 时间戳
+    long nFrameNum;                 // 帧号
+    long nBufLen;                   // 数据长度
+    char* pBuf;                     // 帧数据，以帧为单位回调
+    PLAYM4_SYSTEM_TIME  stSysTime;  // 全局时间
 }RECORD_DATA_INFO;
 
-//Enable pre-record or not, bFlag=1: Enable, bFlag=0: Disable
+//设置预录像开关，bFlag=1开启，bFlag=0关闭
 PLAYM4_API int __stdcall PlayM4_SetPreRecordFlag(int nPort, int bFlag);
 
-//Pre-record data callback
+//预录像数据数据回调
 PLAYM4_API int __stdcall PlayM4_SetPreRecordCallBack(int nPort, void (CALLBACK* PreRecordCBfun)(int nPort, RECORD_DATA_INFO* pRecordDataInfo, void* pUser), void* pUser);
 
 
 typedef struct
 {
-    long    lDataType;          //Private data type
-    long    lDataStrVersion;    //Structure version returned by data, which is mainly for compatibility
+    long    lDataType;          //私有数据类型
+    long    lDataStrVersion;    //数据返回的结构体版本，主要是为了兼容性
     long    lDataTimeStamp;
     long    lDataLength;
     char*   pData;
@@ -751,35 +751,35 @@ typedef struct
 
 PLAYM4_API int __stdcall PlayM4_SetAdditionDataCallBack(int nPort, unsigned int nSyncType, void (CALLBACK* AdditionDataCBFun)(int nPort, AdditionDataInfo* pstAddDataInfo, void* pUser), void* pUser);
 
-///<Real-Time Information Callback
-#define PLAYM4_SOURCE_MODULE             0 // Data Source Module
-#define PLAYM4_DEMUX_MODULE              1 // Analysis Module
-#define PLAYM4_DECODE_MODULE             2 // Decoding Module
-#define PLAYM4_RENDER_MODULE             3 // Render Module
+///<实时信息回调
+#define PLAYM4_SOURCE_MODULE             0 // 数据源模块
+#define PLAYM4_DEMUX_MODULE              1 // 解析模块
+#define PLAYM4_DECODE_MODULE             2 // 解码模块
+#define PLAYM4_RENDER_MODULE             3 // 渲染模块
 
-#define PLAYM4_RTINFO_SOFTDECODE_ERROR   1 // Software decoding error
-#define PLAYM4_RTINFO_MEDIAHEADER_ERROR  2 // Media header error
-#define PLAYM4_RTINFO_ALLOC_MEMORY_ERROR 4 // Allocating memory failed
+#define PLAYM4_RTINFO_SOFTDECODE_ERROR   1 // 软解码错误
+#define PLAYM4_RTINFO_MEDIAHEADER_ERROR  2 // 媒体头错误
+#define PLAYM4_RTINFO_ALLOC_MEMORY_ERROR 4 // 内存分配失败
 
 typedef struct
 {
-    int            nRunTimeModule;     //Running module
-    int            nStrVersion;        //Structure version returned by data, which is mainly for compatibility. In the first version, it is defined as 0x0001
-    int            nFrameTimeStamp;    //Frame No.
-    int            nFrameNum;          //Time stamp
-    int            nErrorCode;         //Error code
-    unsigned char  reserved[12];       //Reserved byte
+    int            nRunTimeModule;     //当前运行模块
+    int            nStrVersion;        //数据返回的结构体版本，主要是为了兼容性,第一个版本定义成0x0001
+    int            nFrameTimeStamp;    //帧号
+    int            nFrameNum;          //时间戳
+    int            nErrorCode;         //错误码
+    unsigned char  reserved[12];       //保留字节
 }RunTimeInfo;
 
 PLAYM4_API int __stdcall PlayM4_SetRunTimeInfoCallBackEx(int nPort, int nModule, void (CALLBACK* RunTimeInfoCBFun)(int nPort, RunTimeInfo* pstRunTimeInfo, void* pUser), void* pUser);
 
 
-///<Window Size Changed Notification
+///<窗口大小改变通知接口
 PLAYM4_API int __stdcall PlayM4_WndResolutionChange(int nPort);//new add
 
 /////////////////////////////////////////////////////////////////////////////
 
-//Unrecommended APIs
+//Unproposed Interface 不建议使用的接口
 /////////////////////////////////////////////////////////////////////////////////////////////
 int  PlayM4_RigisterDrawFun(int nPort,void (CALLBACK* DrawFun)(int nPort,PLAYM4_HDC hDc,void* nUser),void* nUser);
 int  PlayM4_SetDecCallBack(int nPort,void (CALLBACK* DecCBFun)(int nPort,char* pBuf,int nSize,FRAME_INFO * pFrameInfo, void* nReserved1,int nReserved2));
@@ -802,7 +802,7 @@ PLAYM4_API int __stdcall PlayM4_SetRunTimeInfoCallBack(int nPort, void (CALLBACK
 int          PlayM4_InitDDraw(PLAYM4_HWND hWnd);
 int          PlayM4_RealeseDDraw();
 #if (WINVER >= 0x0400)
-//Note: These function must be built under win2000 or above with Microsoft System SDK.
+//Note: These funtion must be builded under win2000 or above with Microsoft Platform sdk.
 //You can download the sdk from "http://www.microsoft.com/msdownload/platformsdk/sdkupdate/";
 int          PlayM4_InitDDrawDevice();
 void         PlayM4_ReleaseDDrawDevice();
@@ -835,13 +835,13 @@ int          PlayM4_GetOriginalFrameCallBack(int nPort, int bIsChange, int bNorm
 int          PlayM4_GetFileSpecialAttr(int nPort, unsigned int* pTimeStamp, unsigned int* pFileNum, unsigned int* pReserved);
 int          PlayM4_GetThrowBFrameCallBack(int nPort, void(CALLBACK* funThrowBFrame)(int nPort, unsigned int nBFrame, unsigned int nUser), unsigned int nUser);
 int          PlayM4_SetAudioCallBack(int nPort, void (__stdcall* funAudio)(int nPort, char* pAudioBuf, int nSize, int nStamp, int nType, int nUser), int nUser);
-//motionflow Multiple Frame
+//motionflow 倍帧
 PLAYM4_API int __stdcall PlayM4_MotionFlow(int nPort, unsigned int dwAdjustType);
 
 int  PlayM4_SetTimerType(int nPort,unsigned int nTimerType,unsigned int nReserved);
 int  PlayM4_GetTimerType(int nPort,unsigned int *pTimerType,unsigned int *pReserved);
 int  PlayM4_SetDisplayMode(int nPort, unsigned int dwType);
-//This function is not available.
+//暂不实现此函数
 PLAYM4_API int __stdcall PlayM4_SetSycStartTime(int nPort, PLAYM4_SYSTEM_TIME *pstSystemTime);
 
 ////////////////////////////////////////////////////////////////////////////////
