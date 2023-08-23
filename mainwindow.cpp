@@ -204,6 +204,10 @@ void MainWindow::on_browseTB_clicked()
 
 void MainWindow::on_startButton_clicked()
 {
+    if (!success) {
+        QMessageBox::about(this, "Record process", "No camera connected");
+        return;
+    }
     if (isReady)
         QMessageBox::about(this, "Record process", "Already started");
     else if (QFileInfo(ui->folder->text()).isDir()) {
